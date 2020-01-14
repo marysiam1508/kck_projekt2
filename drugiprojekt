@@ -1,0 +1,103 @@
+import pygame
+import sys
+from pygame.locals import *
+
+pygame.init()
+
+## czas co jaki odświeża się ekran
+FPS = 60
+fpsClock = pygame.time.Clock()
+
+### ustawienia okna gry
+oknogry = pygame.display.set_mode((1500,800))
+
+pygame.display.set_caption('sprawdź co wiesz')
+
+GRAY = (247, 247, 247)
+
+###### NIE ######
+NIE_SZER = 750  # szerokość
+NIE_WYS = 250  # wysokość
+RED = (255, 0, 0)  # kolor wypełnienia
+NIE_POZ = (0, 550)  # pozycja zapisana w tupli
+# utworzenie powierzchni NIE, wypełnienie jej kolorem
+NIE = pygame.Surface([NIE_SZER, NIE_WYS])
+NIE.fill(RED)
+
+###### TAK ######
+TAK_SZER = 750 # szerokość
+TAK_WYS = 250 # wysokość
+GREEN = (154, 205, 50)  # kolor wypełnienia
+TAK_POZ = (750, 550)  # pozycja zapisana w tupli
+# utworzenie powierzchni TAK, wypełnienie jej kolorem
+TAK = pygame.Surface([TAK_SZER, TAK_WYS])
+TAK.fill(GREEN)
+
+# ustawienie prostokąta zawierającego nie
+NIE_prost = NIE.get_rect()
+NIE_prost.x = NIE_POZ[0]
+NIE_prost.y = NIE_POZ[1]
+
+# ustawienie prostokąta zawierającego TAK
+TAK_prost = TAK.get_rect()
+TAK_prost.x = TAK_POZ[0]
+TAK_prost.y = TAK_POZ[1]
+
+## początkowe ustawienie mrówki i narysowanie jej
+mrowka_Img = pygame.image.load('mrowka.jpg')
+mrowka_x = 650
+mrowka_y = 340
+direction = 'left'
+
+# komunikaty tekstowe ###################################################
+
+instrukcja = 'Kolor czerwony obrazuje odpowiedź "nie", kolor zielony "tak". Gdy mrówka znajdzie się po odpowiedniej stronie - mrugnij. Powodzenia!'
+fontObj = pygame.font.Font('freesansbold.ttf', 22)  # czcionka komunikatów
+
+def drukuj_instrukcja():
+    tekst1 = fontObj.render(instrukcja, True, (0, 0, 0))
+    tekst_prost1 = tekst1.get_rect()
+    oknogry.blit(tekst1, tekst_prost1)
+
+
+
+
+
+### pętla główna programu##
+
+while True:
+  oknogry.fill(GRAY)
+
+  drukuj_instrukcja()
+
+## ruch mrówki
+  if direction == 'right':
+      mrowka_x += 4
+      if mrowka_x == 1250:
+        mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+        direction = 'left'
+  elif direction == 'left':
+    mrowka_x -= 4
+    if mrowka_x == 50:
+        mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+        direction = 'right'
+
+  oknogry.blit(mrowka_Img, (mrowka_x, mrowka_y))
+
+# narysuj NIE w oknie gry
+  oknogry.blit(NIE, NIE_prost)
+
+# narysuj TAK w oknie gry
+  oknogry.blit(TAK, TAK_prost)
+
+
+
+## zamykanie okna gry##
+  for event in pygame.event.get():
+    if event.type == QUIT:
+      pygame.quit()
+      sys.exit()
+
+## aktualizacja czasu i oknagry
+  pygame.display.update()
+  fpsClock.tick(FPS)
