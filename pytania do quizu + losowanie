@@ -1,0 +1,21 @@
+import random
+
+### to będzie funkcja losująca pytanie z listy określonej przed pętlą główną
+
+pytania = [ ["pytanie1" , 0] , ["pytanie 2", 1] , ["pytanie 3", 1] ]
+
+
+### printowanie dowolnego pytania
+x = random.randint(0,len(pytania)-1)
+
+print(pytania[x][0])
+
+### tutaj zamiast intinput trzebą będzie dodać wartość z blink
+odpowiedź = int(input())
+if odpowiedź == pytania[x][1]:
+  print("brawo! to jest prawidłowa odpowiedź")
+else:
+  print("sorka nie masz pkt")
+
+
+# jak zrobić odpowiedzi??? :za pomocą mrówka_x = pętla if mrówka_x < 650: odp = 1 #
