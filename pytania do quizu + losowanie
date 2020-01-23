@@ -2,17 +2,19 @@ import random
 
 ### to będzie funkcja losująca pytanie z listy określonej przed pętlą główną
 
-pytania = [ ["pytanie1" , 0] , ["pytanie 2", 1] , ["pytanie 3", 1] ]
+pytania = {"pytanie1" : 0 , "pytanie 2" : 1 , "pytanie 3" : 1}
 
 
-### printowanie dowolnego pytania
+### printowanie dowolnego pytania. Pętla, żeby losowało wtw są jakieś pytania 
+while len(pytania)>0 
 x = random.randint(0,len(pytania)-1)
-
-print(pytania[x][0])
+### usuwanie z listy, żeby się nie powtarzały
+pytania.remove(x)
+print(pytania[x])
 
 ### tutaj zamiast intinput trzebą będzie dodać wartość z blink
 odpowiedź = int(input())
-if odpowiedź == pytania[x][1]:
+if odpowiedź == pytania[x]:
   print("brawo! to jest prawidłowa odpowiedź")
 else:
   print("sorka nie masz pkt")
