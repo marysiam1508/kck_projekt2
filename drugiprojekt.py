@@ -63,8 +63,18 @@ direction = 'left'
 
 
 instrukcja = 'Kolor czerwony obrazuje odpowiedź "nie", kolor zielony "tak". Gdy mrówka znajdzie się po odpowiedniej stronie - mrugnij. Powodzenia!'
+instrukcja1 = 'Naciśnij tak by zacząć grę'
+pytanie1 = 'Czy matka wie że ćpiesz'
+###Domyślnie odp tak
+pytanie2 = 'Czy jesteś CHWDP 100%'
+###Odpowiedź tak
+pytanie3 = 'Czy jesteś za poprawnością polityczną'
+###Odpowiedź nie
+pytanie4 = 'Jakieś pytanie'
+###Odpowiedź nie
+pytanie5 = 'Jakieś inne pytanie'
 
-fontObj = pygame.font.Font('freesansbold.ttf', 22)
+font = pygame.font.Font('freesansbold.ttf', 22)
 
 
 lista_pytan =  [ ["pytanie 1" , 0] , ["pytanie 2", 1] , ["pytanie 3", 1] ]
@@ -74,63 +84,209 @@ random.shuffle(lista_pytan)
 numer_pytania = 0
 
 def drukuj_instrukcja():
-    tekst1 = fontObj.render(instrukcja, True, (0, 0, 0))
+    tekst1 = font.render(instrukcja, True, (0, 0, 0))
+
     tekst_prost1 = tekst1.get_rect()
     tekst_prost1.center = (750, 25)
     oknogry.blit(tekst1, tekst_prost1)
 
-def drukuj_pytania(lista_pytan, numer_pytania):
-    pyt = fontObj.render(lista_pytan[numer_pytania][0], True, (0, 0, 0))
-    pyt_prost = pyt.get_rect()
-    pyt_prost.center = (750, 100)
-    oknogry.blit(pyt, pyt_prost)
-
-
-
 ### pętla główna programu##
-
+turn= 0
+score=0
 while True:
     oknogry.fill(GRAY)
-
-
 ## wyświetlanie instrukcji
     drukuj_instrukcja()
 
-## wyświetlanie pytań
-    drukuj_pytania(lista_pytan, numer_pytania)
 
 
   ### printowanie dowolnego pytania
 
 
 ## ruch mrówki
-    if direction == 'right':
-        mrowka_x += 4
-        if mrowka_x == 1250:
-            mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
-            direction = 'left'
-
-    elif direction == 'left':
-        mrowka_x -= 4
-        if mrowka_x == 50:
-            mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
-            direction = 'right'
+###Odpwiedź nie === murwka_x <750
+###Odpowiedźnie === mruwka_x>750
 
 
+####
+# Musisz edytować direction = ' null', mrówka musi wrócić do poprzedniego kierunku
+#
+####
+    if turn == 0:
+        pyt= font.render('Naciśnij tak by zacząć grę', True, (0, 0, 0))
+        oknogry.blit(pyt,(650,100))
+        if direction == 'right':
+            mrowka_x += 4
+            if mrowka_x == 1250:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'left'
+
+        elif direction == 'left':
+            mrowka_x -= 4
+            if mrowka_x == 50:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'right'
+        elif direction == 'null':
+            if mrowka_x<750 :
+
+                direction = past_dir  ### Przykład
+                turn+=1
+
+
+            elif mrowka_x>750:
+
+                direction = past_dir
+                turn+=1
+
+
+
+
+    if turn==1:
+        print('turn 1')
+        pyt= font.render(pytanie1, True, (0, 0, 0))
+        oknogry.blit(pyt,(650,100))
+        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
+        if direction == 'right':
+            mrowka_x += 4
+            if mrowka_x == 1250:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'left'
+        elif direction == 'left':
+            mrowka_x -= 4
+            if mrowka_x == 50:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'right'
+        elif direction == 'null':
+            if mrowka_x<750: # and ruch == True:
+                turn+=1
+                direction = past_dir
+                #ruch = False
+            elif mrowka_x>750: # and ruch == True:
+                turn+=1
+                direction = past_dir
+                #ruch = False
+    if turn ==2:
+        print('turn 2')
+        pyt= font.render(pytanie2, True, (0, 0, 0))
+        oknogry.blit(pyt,(650,100))
+        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
+        if direction == 'right':
+            mrowka_x += 4
+            if mrowka_x == 1250:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'left'
+        elif direction == 'left':
+            mrowka_x -= 4
+            if mrowka_x == 50:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'right'
+        elif direction == 'null':
+            if mrowka_x<750:# and ruch == True:
+                turn+=1
+                direction = past_dir
+            if mrowka_x>750:# and ruch == True:
+                turn+=1 
+                direction = past_dir
+    if turn == 3:
+        print('turn 3')
+        pyt= font.render(pytanie3, True, (0, 0, 0))
+        oknogry.blit(pyt,(650,100))
+        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
+        if direction == 'right':
+            mrowka_x += 4
+            if mrowka_x == 1250:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'left'
+        elif direction == 'left':
+            mrowka_x -= 4
+            if mrowka_x == 50:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'right'
+        elif direction == 'null':
+            if mrowka_x<750 :#and ruch == True:
+                turn+=1
+                direction = past_dir
+            if mrowka_x>750:# and ruch == True:
+                turn+=1
+                direction = past_dir
+    if turn == 4:
+        print('turn 4')
+       
+        pyt= font.render(pytanie4, True, (0, 0, 0))
+        oknogry.blit(pyt,(650,100))
+        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
+        if direction == 'right':
+            mrowka_x += 4
+            if mrowka_x == 1250:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'left'
+        elif direction == 'left':
+            mrowka_x -= 4
+            if mrowka_x == 50:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'right'
+        elif direction == 'null':
+            if mrowka_x<750:# and ruch == True:
+                turn+=1
+                direction = past_dir
+            if mrowka_x>750:# and ruch == True:
+                turn+=1
+                direction = past_dir
+    if turn ==5:
+        
+        pyt= font.render(pytanie5, True, (0, 0, 0))
+        oknogry.blit(pyt,(650,100))
+        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
+        if direction == 'right':
+            mrowka_x += 4
+            if mrowka_x == 1250:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'left'
+        elif direction == 'left':
+            mrowka_x -= 4
+            if mrowka_x == 50:
+                mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
+                direction = 'right'
+        elif direction == 'null':
+            if mrowka_x<750:# and ruch == True:
+                print("TOTAL")
+            if mrowka_x>750:# and ruch == True:
+                print("TOTAL")
+
+
+
+
+
+
+
+
+#########################
+#                       #
+#                       #
+#########################
     oknogry.blit(mrowka_Img, (mrowka_x, mrowka_y))
-
-# narysuj NIE w oknie gry
+    # narysuj NIE w oknie gry
     oknogry.blit(NIE, NIE_prost)
-
-# narysuj TAK w oknie gry
+    # narysuj TAK w oknie gry
     oknogry.blit(TAK, TAK_prost)
-
+        #####TUTAJ JEST MIEJSCE W KTÓRYM WYŚWIETLA SIĘ PYTANIE
+    pygame.display.flip()
 
 ## zamykanie okna gry##
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == K_SPACE:
+                past_dir = direction
+                direction = 'null'
+                time.sleep(2)
 
 ## aktualizacja czasu i oknagry
     pygame.display.update()
