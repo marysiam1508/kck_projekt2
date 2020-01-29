@@ -129,147 +129,134 @@ while True:
         elif direction == 'null':
             if mrowka_x<750 :
 
-                direction = 'left'  ### Przykład
+                direction = past_dir  ### Przykład
                 turn+=1
 
 
             elif mrowka_x>750:
 
-
+                direction = past_dir
                 turn+=1
 
 
 
 
-    '''if turn==1:
-        direction == 'right'
+    if turn==1:
+        print('turn 1')
         pyt= font.render(pytanie1, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
         score =font.render('Punkty:'+str(turn),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
-
-
-
         if direction == 'right':
             mrowka_x += 4
             if mrowka_x == 1250:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'left'
-
         elif direction == 'left':
             mrowka_x -= 4
             if mrowka_x == 50:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'right'
-        elif direction == 'null' a:
-            if mrowka_x<750 and ruch = True:
+        elif direction == 'null':
+            if mrowka_x<750: # and ruch == True:
                 turn+=1
-                ruch = False
-            if mrowka_x<750 and ruch = True:
+                direction = past_dir
+                #ruch = False
+            elif mrowka_x>750: # and ruch == True:
                 turn+=1
-                ruch = False
+                direction = past_dir
+                #ruch = False
     if turn ==2:
-        direction == 'right'
+        print('turn 2')
         pyt= font.render(pytanie2, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
         score =font.render('Punkty:'+str(turn),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
-
-
-
         if direction == 'right':
             mrowka_x += 4
             if mrowka_x == 1250:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'left'
-
         elif direction == 'left':
             mrowka_x -= 4
             if mrowka_x == 50:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'right'
         elif direction == 'null':
-            if mrowka_x<750 and ruch = True
+            if mrowka_x<750:# and ruch == True:
                 turn+=1
-            if mrowka_x<750 and ruch = True:
-
-                turn+=1 '''
-    '''if turn == 3:
-        direction == 'right'
+                direction = past_dir
+            if mrowka_x>750:# and ruch == True:
+                turn+=1 
+                direction = past_dir
+    if turn == 3:
+        print('turn 3')
         pyt= font.render(pytanie3, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
         score =font.render('Punkty:'+str(turn),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
-
-
-
         if direction == 'right':
             mrowka_x += 4
             if mrowka_x == 1250:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'left'
-
         elif direction == 'left':
             mrowka_x -= 4
             if mrowka_x == 50:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'right'
         elif direction == 'null':
-            if mrowka_x<750 and ruch = True:
+            if mrowka_x<750 :#and ruch == True:
                 turn+=1
-            if mrowka_x<750 and ruch = True:
-
+                direction = past_dir
+            if mrowka_x>750:# and ruch == True:
                 turn+=1
+                direction = past_dir
     if turn == 4:
-        direction == 'right'
+        print('turn 4')
+       
         pyt= font.render(pytanie4, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
         score =font.render('Punkty:'+str(turn),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
-
-
-
         if direction == 'right':
             mrowka_x += 4
             if mrowka_x == 1250:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'left'
-
         elif direction == 'left':
             mrowka_x -= 4
             if mrowka_x == 50:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'right'
         elif direction == 'null':
-            if mrowka_x<750 and ruch = True:
+            if mrowka_x<750:# and ruch == True:
                 turn+=1
-            if mrowka_x<750 and ruch = True:
+                direction = past_dir
+            if mrowka_x>750:# and ruch == True:
                 turn+=1
+                direction = past_dir
     if turn ==5:
-        direction == 'right'
+        
         pyt= font.render(pytanie5, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
         score =font.render('Punkty:'+str(turn),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
-
-
-
         if direction == 'right':
             mrowka_x += 4
             if mrowka_x == 1250:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'left'
-
         elif direction == 'left':
             mrowka_x -= 4
             if mrowka_x == 50:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'right'
         elif direction == 'null':
-            if mrowka_x<750 and ruch = True:
+            if mrowka_x<750:# and ruch == True:
                 print("TOTAL")
-            if mrowka_x<750 and ruch = True:
-                print("TOTAL")'''
+            if mrowka_x>750:# and ruch == True:
+                print("TOTAL")
 
 
 
@@ -297,7 +284,9 @@ while True:
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == K_SPACE:
+                past_dir = direction
                 direction = 'null'
+                time.sleep(2)
 
 ## aktualizacja czasu i oknagry
     pygame.display.update()
