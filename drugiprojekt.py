@@ -64,15 +64,16 @@ direction = 'left'
 
 instrukcja = 'Kolor czerwony obrazuje odpowiedź "nie", kolor zielony "tak". Gdy mrówka znajdzie się po odpowiedniej stronie - mrugnij. Powodzenia!'
 instrukcja1 = 'Naciśnij tak by zacząć grę'
-pytanie1 = 'Czy matka wie że ćpiesz'
+Pytanie1 = 'Królowa mrówek może przeżyć do 25 lat'
 ###Domyślnie odp tak
-pytanie2 = 'Czy jesteś CHWDP 100%'
+pytanie2 = 'Mrówka, której ekspozycja trwa 50 ms, pozostanie w pamięci ikonicznej na dłużej niż mrówka, której ekspozycja trwa 100 ms'
 ###Odpowiedź tak
-pytanie3 = 'Czy jesteś za poprawnością polityczną'
+pytanie3 = 'Istnieje około 1000 gatunków mrówek'
 ###Odpowiedź nie
-pytanie4 = 'Jakieś pytanie'
+pytanie4 = 'Mrówka należy do rodziny pajęczaków'
 ###Odpowiedź nie
-pytanie5 = 'Jakieś inne pytanie'
+pytanie5 = 'Zdanie: jeżeli mrówka jest owadem, to Ziemia jest płaska jest prawdziwe'
+###Odpowiedź nie
 
 font = pygame.font.Font('freesansbold.ttf', 22)
 
@@ -92,7 +93,7 @@ def drukuj_instrukcja():
 
 ### pętla główna programu##
 turn= 0
-score=0
+pkt=0
 while True:
     oknogry.fill(GRAY)
 ## wyświetlanie instrukcji
@@ -145,7 +146,7 @@ while True:
         print('turn 1')
         pyt= font.render(pytanie1, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
-        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
             mrowka_x += 4
@@ -159,6 +160,7 @@ while True:
                 direction = 'right'
         elif direction == 'null':
             if mrowka_x<750: # and ruch == True:
+                pkt+=1
                 turn+=1
                 direction = past_dir
                 #ruch = False
@@ -170,7 +172,7 @@ while True:
         print('turn 2')
         pyt= font.render(pytanie2, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
-        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
             mrowka_x += 4
@@ -184,6 +186,7 @@ while True:
                 direction = 'right'
         elif direction == 'null':
             if mrowka_x<750:# and ruch == True:
+                pkt+=1
                 turn+=1
                 direction = past_dir
             if mrowka_x>750:# and ruch == True:
@@ -193,7 +196,7 @@ while True:
         print('turn 3')
         pyt= font.render(pytanie3, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
-        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
             mrowka_x += 4
@@ -210,6 +213,7 @@ while True:
                 turn+=1
                 direction = past_dir
             if mrowka_x>750:# and ruch == True:
+                pkt+=1
                 turn+=1
                 direction = past_dir
     if turn == 4:
@@ -217,7 +221,7 @@ while True:
        
         pyt= font.render(pytanie4, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
-        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
             mrowka_x += 4
@@ -234,13 +238,14 @@ while True:
                 turn+=1
                 direction = past_dir
             if mrowka_x>750:# and ruch == True:
+                pkt+=1
                 turn+=1
                 direction = past_dir
     if turn ==5:
         
         pyt= font.render(pytanie5, True, (0, 0, 0))
         oknogry.blit(pyt,(650,100))
-        score =font.render('Punkty:'+str(turn),True,(0,0,0))
+        score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
             mrowka_x += 4
@@ -256,6 +261,7 @@ while True:
             if mrowka_x<750:# and ruch == True:
                 print("TOTAL")
             if mrowka_x>750:# and ruch == True:
+                pkt+=1
                 print("TOTAL")
 
 
