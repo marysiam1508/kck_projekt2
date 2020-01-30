@@ -64,9 +64,9 @@ direction = 'left'
 
 instrukcja = 'Kolor czerwony obrazuje odpowiedź "nie", kolor zielony "tak". Gdy mrówka znajdzie się po odpowiedniej stronie - mrugnij. Powodzenia!'
 instrukcja1 = 'Naciśnij tak by zacząć grę'
-Pytanie1 = 'Królowa mrówek może przeżyć do 25 lat'
+pytanie1 = 'Królowa mrówek może przeżyć do 25 lat'
 ###Domyślnie odp tak
-pytanie2 = 'Mrówka, której ekspozycja trwa 50 ms, pozostanie w pamięci ikonicznej na dłużej niż mrówka, której ekspozycja trwa 100 ms'
+pytanie2 = 'Mrówka pokazywana 50 ms pozostanie w pamięci ikonicznej dłużej niż mrówka eksponowana 100 ms'
 ###Odpowiedź tak
 pytanie3 = 'Istnieje około 1000 gatunków mrówek'
 ###Odpowiedź nie
@@ -78,9 +78,6 @@ pytanie5 = 'Zdanie: jeżeli mrówka jest owadem, to Ziemia jest płaska jest pra
 font = pygame.font.Font('freesansbold.ttf', 22)
 
 
-lista_pytan =  [ ["pytanie 1" , 0] , ["pytanie 2", 1] , ["pytanie 3", 1] ]
-
-random.shuffle(lista_pytan)
 
 numer_pytania = 0
 
@@ -101,16 +98,11 @@ while True:
 
 
 
-  ### printowanie dowolnego pytania
-
-
 ## ruch mrówki
 ###Odpwiedź nie === murwka_x <750
 ###Odpowiedźnie === mruwka_x>750
 
 
-####
-# Musisz edytować direction = ' null', mrówka musi wrócić do poprzedniego kierunku
 #
 ####
     if turn == 0:
@@ -159,15 +151,16 @@ while True:
                 mrowka_Img = pygame.transform.flip(mrowka_Img, True, False)
                 direction = 'right'
         elif direction == 'null':
-            if mrowka_x<750: # and ruch == True:
+            if mrowka_x<750: 
+                pkt+=0
+                turn+=1
+                direction = past_dir
+               
+            elif mrowka_x>750: 
                 pkt+=1
                 turn+=1
                 direction = past_dir
-                #ruch = False
-            elif mrowka_x>750: # and ruch == True:
-                turn+=1
-                direction = past_dir
-                #ruch = False
+                
     if turn ==2:
         print('turn 2')
         pyt= font.render(pytanie2, True, (0, 0, 0))
@@ -186,11 +179,13 @@ while True:
                 direction = 'right'
         elif direction == 'null':
             if mrowka_x<750:# and ruch == True:
-                pkt+=1
+                pkt+=0
                 turn+=1
                 direction = past_dir
             if mrowka_x>750:# and ruch == True:
-                turn+=1 
+                pkt+=1
+                turn+=1
+                
                 direction = past_dir
     if turn == 3:
         print('turn 3')
@@ -210,10 +205,12 @@ while True:
                 direction = 'right'
         elif direction == 'null':
             if mrowka_x<750 :#and ruch == True:
+                pkt+=1
                 turn+=1
+                
                 direction = past_dir
             if mrowka_x>750:# and ruch == True:
-                pkt+=1
+                pkt+=0
                 turn+=1
                 direction = past_dir
     if turn == 4:
@@ -235,7 +232,9 @@ while True:
                 direction = 'right'
         elif direction == 'null':
             if mrowka_x<750:# and ruch == True:
+                pkt+=1
                 turn+=1
+                
                 direction = past_dir
             if mrowka_x>750:# and ruch == True:
                 pkt+=1
@@ -259,10 +258,15 @@ while True:
                 direction = 'right'
         elif direction == 'null':
             if mrowka_x<750:# and ruch == True:
-                print("TOTAL")
-            if mrowka_x>750:# and ruch == True:
                 pkt+=1
                 print("TOTAL")
+            if mrowka_x>750:# and ruch == True:
+                pkt+=0
+    if turn ==6:
+        score = font.render ('Punkty:' +str(pkt),True,(0,0,0))
+        oknogry.blit(score(100,100))
+        
+        
 
 
 
