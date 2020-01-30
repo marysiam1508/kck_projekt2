@@ -137,7 +137,7 @@ while True:
     if turn==1:
         print('turn 1')
         pyt= font.render(pytanie1, True, (0, 0, 0))
-        oknogry.blit(pyt,(650,100))
+        oknogry.blit(pyt,(550,100))
         score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
@@ -164,7 +164,7 @@ while True:
     if turn ==2:
         print('turn 2')
         pyt= font.render(pytanie2, True, (0, 0, 0))
-        oknogry.blit(pyt,(650,100))
+        oknogry.blit(pyt,(350,100))
         score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
@@ -190,7 +190,7 @@ while True:
     if turn == 3:
         print('turn 3')
         pyt= font.render(pytanie3, True, (0, 0, 0))
-        oknogry.blit(pyt,(650,100))
+        oknogry.blit(pyt,(550,100))
         score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
@@ -217,7 +217,7 @@ while True:
         print('turn 4')
        
         pyt= font.render(pytanie4, True, (0, 0, 0))
-        oknogry.blit(pyt,(650,100))
+        oknogry.blit(pyt,(550,100))
         score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
@@ -243,7 +243,7 @@ while True:
     if turn ==5:
         
         pyt= font.render(pytanie5, True, (0, 0, 0))
-        oknogry.blit(pyt,(650,100))
+        oknogry.blit(pyt,(420,100))
         score =font.render('Punkty:'+str(pkt),True,(0,0,0))
         oknogry.blit(score,(100,100)) ### Manipuluj X i Y aby ustawić napis
         if direction == 'right':
