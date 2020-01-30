@@ -259,9 +259,10 @@ while True:
         elif direction == 'null':
             if mrowka_x<750:# and ruch == True:
                 pkt+=1
-                print("TOTAL")
+                turn+=1
             if mrowka_x>750:# and ruch == True:
                 pkt+=0
+                turn+=1
     if turn ==6:
         score = font.render ('Punkty:' +str(pkt),True,(0,0,0))
         oknogry.blit(score(100,100))
